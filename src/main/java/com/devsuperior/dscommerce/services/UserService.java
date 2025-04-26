@@ -1,6 +1,6 @@
 package com.devsuperior.dscommerce.services;
 
-import com.devsuperior.dscommerce.UserDetailsProjection;
+import com.devsuperior.dscommerce.projections.UserDetailsProjection;
 import com.devsuperior.dscommerce.entities.Role;
 import com.devsuperior.dscommerce.entities.User;
 import com.devsuperior.dscommerce.repositories.UserRepository;
@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
