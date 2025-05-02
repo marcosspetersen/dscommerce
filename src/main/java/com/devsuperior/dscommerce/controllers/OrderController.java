@@ -1,11 +1,9 @@
 package com.devsuperior.dscommerce.controllers;
 
-import com.devsuperior.dscommerce.entities.OrderDTO;
+import com.devsuperior.dscommerce.dto.UserDTO;
 import com.devsuperior.dscommerce.services.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -21,15 +19,15 @@ public class OrderController {
     private OrderService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<OrderDTO> findById(@PathVariable Long id) {
-        OrderDTO dto = service.findById(id);
+    public ResponseEntity<UserDTO.OrderDTO> findById(@PathVariable Long id) {
+        UserDTO.OrderDTO dto = service.findById(id);
 
        return ResponseEntity.ok(dto);
     }
 
     @PreAuthorize("hasRole('ROLE_CLIENT')")
     @PostMapping
-    public ResponseEntity<OrderDTO> insert(@Valid @RequestBody OrderDTO dto) {
+    public ResponseEntity<UserDTO.OrderDTO> insert(@Valid @RequestBody UserDTO.OrderDTO dto) {
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
