@@ -21,7 +21,6 @@ public class OrderController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDTO.OrderDTO> findById(@PathVariable Long id) {
         UserDTO.OrderDTO dto = service.findById(id);
-
        return ResponseEntity.ok(dto);
     }
 
